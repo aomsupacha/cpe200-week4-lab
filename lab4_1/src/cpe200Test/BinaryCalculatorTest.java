@@ -193,11 +193,11 @@ public class BinaryCalculatorTest {
 
     @Test
     public void powerDoubleSimple() throws Exception {
-        firstOperand = new Operand(3.0);
-        secondOperand = new Operand(2.0);
+        firstOperand = new Operand(2.0);
+        secondOperand = new Operand(3.0);
         binaryCalculator.setFirstOperand(firstOperand);
         binaryCalculator.setSecondOperand(secondOperand);
-        assertEquals("8", binaryCalculator.multiply());
+        assertEquals("8", binaryCalculator.power());
     }
 
     @Test
