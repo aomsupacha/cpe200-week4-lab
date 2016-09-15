@@ -1,39 +1,90 @@
 package cpe200;
+import java.text.DecimalFormat;
 
 
-public class BinaryCalculator {
-    public Operand firstOperand;
-    public Operand secondOperand;
+public class   BinaryCalculator {
+    private Operand firstOperand;
+    private Operand secondOperand;
 
     public BinaryCalculator() {
+
     }
 
     public void setFirstOperand(Operand operand) {
+        this.firstOperand = operand;
     }
 
 
     public void setSecondOperand(Operand operand) {
+        this.secondOperand = operand;
     }
 
+
     public String add() {
-        return null;
+        double sum = Double.parseDouble(firstOperand.getOperand())+Double.parseDouble(secondOperand.getOperand());
+        if((sum == Math.floor(sum)&& !Double.isInfinite(sum))){
+            int sumx = (int)sum;
+            return  Integer.toString((sumx));
+        }else{
+            DecimalFormat formatnum = new DecimalFormat("#0.0");
+            return formatnum.format(sum);
+        }
+
     }
 
     public String subtract() {
-        return null;
+        double sum = Double.parseDouble(firstOperand.getOperand())-Double.parseDouble(secondOperand.getOperand());
+        if((sum == Math.floor(sum)&& !Double.isInfinite(sum))){
+            int sumx = (int)sum;
+            return  Integer.toString((sumx));
+        }else{
+            DecimalFormat formatnum = new DecimalFormat("#0.0");
+            return formatnum.format(sum);
+        }
     }
 
+
+
+
     public String multiply() {
-        return null;
+        double sum = Double.parseDouble(firstOperand.getOperand()) * Double.parseDouble(secondOperand.getOperand());
+        if ((sum == Math.floor(sum) && !Double.isInfinite(sum))) {
+            int sumx = (int)sum;
+            return Integer.toString(sumx);
+        } else {
+            DecimalFormat formatnum = new DecimalFormat("#0.0");
+            return formatnum.format(sum);
+        }
     }
 
     /* This method should throw an exception when divide by zero */
     public String division() throws ArithmeticException {
-        return null;
+        if (Double.parseDouble(secondOperand.getOperand()) != 0) {
+            double sum = Double.parseDouble(firstOperand.getOperand()) / Double.parseDouble(secondOperand.getOperand());
+            if ((sum == Math.floor(sum) && !Double.isInfinite(sum))) {
+                int sumx = (int) sum;
+                return Integer.toString((sumx));
+            } else {
+                sum = sum * 100000;
+                sum = Math.floor(sum);
+                int counter = (int) sum;
+                sum = (double) counter / 100000;
+                return Double.toString(sum);
+            }
+        }else{
+            int a = 2;
+            return Integer.toString(a/0);
+        }
     }
 
-    public String power() {
-        return null;
+    public String power(){
+        double x = Math.pow(Double.parseDouble(firstOperand.getOperand()),Double.parseDouble(secondOperand.getOperand()));
+        if(x == Math.floor(x)) {
+            int i = (int) x;
+            return Integer.toString(i);
+        }
+        else {
+            return Double.toString(x);
+        }
     }
-
 }
